@@ -1,10 +1,11 @@
 import { useState } from "react"
 import Counter from "./components/common/Counter"
 import Navbar from "./components/layout/Navbar"
-import ItemListContainer from "./components/pages/ItemListContainer"
+import ItemListContainer from "./components/pages/itemListContainer/ItemListContainer"
 import 'bootstrap';
 import * as bootstrap from 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import ItemCountContainer from "./components/common/itemCount/ItemCountContainer";
 
 
 const App= ()=> {  
@@ -19,12 +20,13 @@ const App= ()=> {
 
   return (
     <>
-      <div>
+      <>
         {/* <button onClick={cambiarModo}>De modo claro a modo oscuro</button> */}
-        <Navbar />
-        <ItemListContainer  saludo={"Edy"} />
-        <Counter/>
-      </div>
+        <ItemCountContainer stock={3}/>
+        {/* // <Navbar />
+        // <ItemListContainer />
+        // <Counter/> */}
+      </>
     </>
   )
 }
