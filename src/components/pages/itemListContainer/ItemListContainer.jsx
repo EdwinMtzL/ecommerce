@@ -2,28 +2,34 @@ import ProductCard from "../../common/ProductCard";
 import "bootstrap";
 import { ItemList } from "./ItemList";
 import { useEffect, useState } from "react";
+import { products } from "../../../productsMock";
 
 const ItemListContainer = () => {
-  const [items, setItems] = useState([]);
 
-  const [nombre, setNombre] = useState("Soy edd");
+  const[ items, setItems ] = useState([]);
 
-  const saludar = () => {
-    setNombre("Papu");
-  };
+  useEffect(()=>{
+    // CREAMOS O SOLICITAMOS
+      const tarea = new Promise( (resolve, reject) => {
+        resolve( products );
+        reject('Error algo salio mal');
+      });
+    
+      // MANIPULAMOS
+      tarea
+      .then( (res)=>{
+        setItems(res);
+      })
+      .catch( (error)=>{
+        console.log(error);
+      })
+  },[]);
 
-  console.log("Peticion fuera del effect");
-
-  // useEffect(() => {
-  //   console.log('Se ejecuta dentro');
-
-  // }, [])//Array de dependencas
-
-  useEffect(() => {
-    console.log("Se ejecuta dentro");
-  }, []); //Array de dependencas
-
-  return <ItemList nombre={nombre} saludar={saludar} />;
+  return (
+    <>
+      <ItemList items={items} /> 
+    </>
+  )
 };
 
 export default ItemListContainer;

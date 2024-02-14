@@ -1,0 +1,38 @@
+ export let products = [
+    {
+        id: 7,
+        title:'audifonos',
+        price: 700,
+        description: 'la novedad',
+        image: '', 
+        stock:112,
+        category: 'Accesorios',
+    },
+    {
+        id: 17,
+        title:'iPhone',
+        price: 8700,
+        description: 'la novedad en moviles',
+        image: '', 
+        stock:12,
+        category: 'Celulares',
+    },
+    {
+        id: 27,
+        title:'Nintendo',
+        price: 12700,
+        description: 'consola semi nueva',
+        image: '', 
+        stock:12,
+        category: 'Consolas',
+    },
+    {
+        id: 37,
+        title:'Xbox One',
+        price: 1240,
+        description: 'la novedad',
+        image: '', 
+        stock:112,
+        category: 'Consola',
+    },
+]

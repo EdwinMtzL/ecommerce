@@ -22,10 +22,10 @@ const App= ()=> {
     <>
       <>
         {/* <button onClick={cambiarModo}>De modo claro a modo oscuro</button> */}
-        <ItemCountContainer stock={3}/>
-        {/* // <Navbar />
-        // <ItemListContainer />
-        // <Counter/> */}
+        {/* <ItemCountContainer stock={3}/> */}
+        <Navbar />
+        <ItemListContainer />
+        {/* // <Counter/>  */}
       </>
     </>
   )
