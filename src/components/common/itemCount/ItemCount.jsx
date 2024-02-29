@@ -1,10 +1,10 @@
 const ItemCount = ({addOne,subOne, counter}) => {
   return (
-    <div>
-      <button onClick={subOne} disabled={counter === 1 ? true : false } >-</button>
+    <div className="d-flex">
+      <button onClick={subOne} className="btn btn-primary me-3" disabled={counter === 1 ? true : false } >-</button>
       <h4>{counter}</h4>
-      <button onClick={addOne}>+</button>
-      <button>Agregar carrito</button>
+      <button className="btn btn-primary ms-3 me-3" onClick={addOne}>+</button>
+      <button className="btn btn-info me-3">Agregar carrito</button>
 
     </div>
   );

@@ -1,6 +1,6 @@
- export let products = [
+const products = [
     {
-        id: 7,
+        id: "1",
         title:'audifonos',
         price: 700,
         description: 'la novedad',
@@ -9,7 +9,7 @@
         category: 'Accesorios',
     },
     {
-        id: 17,
+        id: "2",
         title:'iPhone',
         price: 8700,
         description: 'la novedad en moviles',
@@ -18,7 +18,7 @@
         category: 'Celulares',
     },
     {
-        id: 27,
+        id: "3",
         title:'Nintendo',
         price: 12700,
         description: 'consola semi nueva',
@@ -27,12 +27,41 @@
         category: 'Consolas',
     },
     {
-        id: 37,
+        id: "4",
         title:'Xbox One',
         price: 1240,
         description: 'la novedad',
         image: '', 
         stock:112,
-        category: 'Consola',
+        category: 'Consolas',
     },
 ]
+
+export const getProducts = () =>{
+    return new Promise((resolve,reject) => {
+        if(products.length > 0 ){
+            setTimeout(()=>{
+                resolve(products)
+            },2000)
+        }else{
+            reject("No hay productos")
+        }
+    })
+}
+
+export const getProduct = (id)=>{
+    return new Promise((resolve,reject)=>{
+        if(products.length > 0){
+            const item = products.find( product => product.id === id )
+            setTimeout(()=>{
+                if(item){
+                    resolve(item)
+                }else{
+                    reject(`No se encuentra el producto con el id ${id}`)
+                }
+            },2000)
+        }else{
+            reject("no hay productos")
+        }
+    })
+}

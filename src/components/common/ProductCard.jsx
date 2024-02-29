@@ -1,14 +1,20 @@
+import { Link } from "react-router-dom";
 
 export default function ProductCard( {img,id,title,description, price} ) {
 
     // const {title, description, price} = prop;
   
 return (
-    <div className='card mt-4 m-lg-1' key={id}>
-        <img />
-        <h2> {title} </h2>
-        <h3> {description} </h3>
-        <p> {price} </p>
+    <div className="col">
+        <div className='card mt-4 m-lg-1 p-3' key={id}>
+            <img />
+            <h2> {title} </h2>
+            <p> <strong>Descripción:</strong> {description} </p>
+            <p> <strong>Precio: </strong> ${price}.00 </p>
+            <Link to={`/item/${id}`}>
+                <button className="btn btn-primary">Detalle</button>
+            </Link>
+        </div>
     </div>
   )
 }

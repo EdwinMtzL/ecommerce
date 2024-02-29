@@ -1,33 +1,40 @@
-import ProductCard from "../../common/ProductCard";
 import "bootstrap";
 import { ItemList } from "./ItemList";
-import { useEffect, useState } from "react";
-import { products } from "../../../productsMock";
+import { useState, useEffect } from "react";
+import { getProducts } from "../../../productsMock";
+import { useParams } from "react-router-dom";
 
 const ItemListContainer = () => {
-
-  const[ items, setItems ] = useState([]);
+  const { category } = useParams();
+  const[ products, setProducts ] = useState([]);
+  const [isLoading, setIsloading] = useState(true)
 
   useEffect(()=>{
-    // CREAMOS O SOLICITAMOS
-      const tarea = new Promise( (resolve, reject) => {
-        resolve( products );
-        reject('Error algo salio mal');
-      });
-    
-      // MANIPULAMOS
-      tarea
-      .then( (res)=>{
-        setItems(res);
-      })
-      .catch( (error)=>{
-        console.log(error);
-      })
-  },[]);
+    setIsloading(true)
+
+    getProducts().then((resp) => {
+      console.log(resp);
+      // setItem(resp)
+      // setIsloading(false)
+      // verificar si existe una categoria
+      if(category){
+        const productFilter = resp.filter( (product) => product.category === category )
+        // Guarda los productos filtrados
+        setProducts(productFilter);
+      }else{
+        // si no tenemos una categoria almacenamos todos los productos
+        setProducts(resp)
+      }
+      setIsloading(false)
+    })
+  },[category]);
+
+
+
 
   return (
     <>
-      <ItemList items={items} /> 
+     { isLoading ?  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" /> :  <ItemList items={products} /> }
     </>
   )
 };

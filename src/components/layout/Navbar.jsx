@@ -1,5 +1,6 @@
 // import { FaMugSaucer } from "react-icons/fa6";
 
+import { Link } from "react-router-dom";
 import { CartWidget } from "../common/CartWidget";
 
 
@@ -15,21 +16,30 @@ export default function Navbar() {
     <div className="collapse navbar-collapse" id="navbarText">
       <ul className="navbar-nav me-auto mb-2 mb-lg-0">
         <li className="nav-item">
-          <a className="nav-link active" aria-current="page" href="#">Inicio</a>
+          <Link to="/">
+            <button className="nav-link active">Inicio</button>
+          </Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">Accesorios iPhone</a>
+          <Link to="/category/Accesorios">
+            <button className="nav-link">Accesorios iPhone</button>
+          </Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">Accesorios Android</a>
+          <Link to="/category/Celulares">
+            <button className="nav-link">Celulares</button>
+          </Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">Computadora</a>
+          <Link to="/category/Consolas">
+            <button className="nav-link">Consolas</button>
+          </Link>
         </li>
       </ul>
       <div className="navbar-text d-flex">
-        <span className="me-2">Carrito</span> 
-        <CartWidget/>
+        <Link to="cart">
+          <CartWidget/>
+        </Link>
       </div>
     </div>
   </div>
