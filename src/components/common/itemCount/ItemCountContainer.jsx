@@ -1,22 +1,22 @@
 import React, { useState } from "react";
 import ItemCount from "./ItemCount";
 
-const ItemCountContainer = ({ stock }) => {
-  const [counter, setCounter] = useState(1);
+const ItemCountContainer = ({ stock , onAdd , initial =1 }) => {
+  const [counter, setCounter] = useState(initial);
 
-  const addOne = () => {
+  const suma = () => {
     if (counter < stock) {
         setCounter(counter +1)
     }
   };
 
-  const subOne = () => {
+  const resta = () => {
     if (counter > 1) {
         setCounter(counter - 1)
     }
   };
 
-  return <ItemCount addOne={addOne} subOne={subOne} counter={counter}/>;
+  return <ItemCount suma={suma} resta={resta} counter={counter} onAdd={onAdd} />;
 };
 
 export default ItemCountContainer;

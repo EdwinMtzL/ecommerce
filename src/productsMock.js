@@ -1,6 +1,6 @@
 const products = [
     {
-        id: "1",
+        id: 1,
         title:'audifonos',
         price: 700,
         description: 'la novedad',
@@ -9,7 +9,7 @@ const products = [
         category: 'Accesorios',
     },
     {
-        id: "2",
+        id: 2,
         title:'iPhone',
         price: 8700,
         description: 'la novedad en moviles',
@@ -18,7 +18,7 @@ const products = [
         category: 'Celulares',
     },
     {
-        id: "3",
+        id: 3,
         title:'Nintendo',
         price: 12700,
         description: 'consola semi nueva',
@@ -27,7 +27,7 @@ const products = [
         category: 'Consolas',
     },
     {
-        id: "4",
+        id: 4,
         title:'Xbox One',
         price: 1240,
         description: 'la novedad',

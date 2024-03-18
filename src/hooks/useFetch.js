@@ -14,7 +14,6 @@ export const useFetch = (url) =>{
     
         const resp = await fetch(url);
         const respData = await resp.json();
-        console.log(respData );
 
         setState({
             data: respData,

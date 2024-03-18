@@ -13,7 +13,7 @@ const ItemListContainer = () => {
     setIsloading(true)
 
     getProducts().then((resp) => {
-      console.log(resp);
+      // console.log(resp);
       // setItem(resp)
       // setIsloading(false)
       // verificar si existe una categoria

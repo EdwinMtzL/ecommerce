@@ -1,7 +1,7 @@
 import React from "react";
 import ItemCountContainer from "./itemCount/ItemCountContainer";
 
-export const ItemDetail = ({ img, title, description, price }) => {
+export const ItemDetail = ({ img, title, description, price , stock, onAdd}) => {
   return (
     <>
       <div className="row row-cols-1 row-cols-md-2 g-4">
@@ -16,7 +16,7 @@ export const ItemDetail = ({ img, title, description, price }) => {
               <strong>Precio:</strong>
               <span className="">${price}.00</span>
             </p>
-            <ItemCountContainer />
+            <ItemCountContainer stock={stock} onAdd={onAdd} />
           </div>
         </div>
       </div>
