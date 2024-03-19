@@ -21,20 +21,15 @@ export default function Navbar() {
           </Link>
         </li>
         <li className="nav-item">
-          <Link to="/category/Accesorios">
-            <button className="nav-link">Accesorios iPhone</button>
+          <Link to="/category/hombre">
+            <button className="nav-link">Hombre</button>
           </Link>
         </li>
         <li className="nav-item">
-          <Link to="/category/Celulares">
-            <button className="nav-link">Celulares</button>
+          <Link to="/category/mujer">
+            <button className="nav-link">Mujer</button>
           </Link>
-        </li>
-        <li className="nav-item">
-          <Link to="/category/Consolas">
-            <button className="nav-link">Consolas</button>
-          </Link>
-        </li>
+        </li>     
       </ul>
       <div className="navbar-text d-flex">
         <Link to="cart">

@@ -4,8 +4,8 @@ const products = [
         title:'audifonos',
         price: 700,
         description: 'la novedad',
-        image: '', 
-        stock:112,
+        image: 'https://res.cloudinary.com/dhvinlwbj/image/upload/v1710794080/Ecommerce/Hombre/hl82sp9zmzm56wqnhtk2.jpg', 
+        stock:11,
         category: 'Accesorios',
     },
     {
@@ -13,8 +13,8 @@ const products = [
         title:'iPhone',
         price: 8700,
         description: 'la novedad en moviles',
-        image: '', 
-        stock:12,
+        image: 'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/6ebc2e8b8fd44d92a84111595567e820_9366/Jersey_Uniforme_Local_Real_Madrid_23-24_Blanco_IB0016_HM1.jpg', 
+        stock:5,
         category: 'Celulares',
     },
     {
@@ -23,7 +23,7 @@ const products = [
         price: 12700,
         description: 'consola semi nueva',
         image: '', 
-        stock:12,
+        stock:3,
         category: 'Consolas',
     },
     {
@@ -50,6 +50,7 @@ export const getProducts = () =>{
 }
 
 export const getProduct = (id)=>{
+    console.log(id);
     return new Promise((resolve,reject)=>{
         if(products.length > 0){
             const item = products.find( product => product.id === id )
@@ -57,7 +58,7 @@ export const getProduct = (id)=>{
                 if(item){
                     resolve(item)
                 }else{
-                    reject(`No se encuentra el producto con el id ${id}`)
+                    reject(`No se encuentra el producto con el id`)
                 }
             },2000)
         }else{

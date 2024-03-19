@@ -1,8 +1,10 @@
 import "bootstrap";
 import { ItemList } from "./ItemList";
 import { useState, useEffect } from "react";
-import { getProducts } from "../../../productsMock";
 import { useParams } from "react-router-dom";
+import { CardSkeleton } from "../../common/CardSkeleton";
+import { db } from "../../../firebaseConfig";
+import { collection, getDocs,query , where } from "firebase/firestore";
 
 const ItemListContainer = () => {
   const { category } = useParams();
@@ -10,33 +12,58 @@ const ItemListContainer = () => {
   const [isLoading, setIsloading] = useState(true)
 
   useEffect(()=>{
-    setIsloading(true)
 
-    getProducts().then((resp) => {
-      // console.log(resp);
-      // setItem(resp)
-      // setIsloading(false)
-      // verificar si existe una categoria
-      if(category){
-        const productFilter = resp.filter( (product) => product.category === category )
-        // Guarda los productos filtrados
-        setProducts(productFilter);
-      }else{
-        // si no tenemos una categoria almacenamos todos los productos
-        setProducts(resp)
-      }
-      setIsloading(false)
-    })
+    let productsCollection = collection(db, "products");
+    
+    let consulta = productsCollection ;
+
+    if(category){
+      let productsCollectionFiltered = query( 
+        productsCollection, 
+        where( "category" , "==" , category) 
+      )
+      consulta = productsCollectionFiltered
+    }
+
+    getDocs( consulta )
+    .then( resp => {
+      let arrayNew = resp.docs
+      .map( (element) => {
+          return { ...element.data(), id: element.id }
+      });
+      setProducts(arrayNew);
+    } ).finally( () => setIsloading(false) )
+
   },[category]);
 
+  //if con return temprano 
+  if( isLoading ){
+    return  (
+    <div className="d-flex">
+      { category ? ( 
+        <>
+          <CardSkeleton/>
+          <CardSkeleton/>
+          <CardSkeleton/>
+          <CardSkeleton/>
+        </>
+      ) : (
+        <>
+          <CardSkeleton/>
+          <CardSkeleton/>
+          <CardSkeleton/>
+          <CardSkeleton/>
+        </>
 
-
+      )}
+    </div>
+    );
+  }
 
   return (
-    <>
-     { isLoading ?  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" /> :  <ItemList items={products} /> }
-    </>
-  )
+   <>
+    <ItemList items={products} />
+   </>
+  );
 };
-
 export default ItemListContainer;

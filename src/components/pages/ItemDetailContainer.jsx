@@ -3,7 +3,10 @@ import { useParams } from 'react-router-dom'
 import { ItemDetail } from '../common/ItemDetail'
 import { getProduct } from '../../productsMock'
 import { CardContext } from '../../context/CardContext'
-import ItemCount from '../common/itemCount/ItemCount'
+import { CardSkeleton } from '../common/CardSkeleton'
+
+import { db } from '../../firebaseConfig'
+import { collection, doc, getDoc } from "firebase/firestore";
 
 export const ItemDetailContainer = () => {
 
@@ -12,13 +15,19 @@ export const ItemDetailContainer = () => {
     const [item , setItem] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
-    const {addToCart} = useContext( CardContext );
+    const {addToCart ,getTotalQuantityById} = useContext( CardContext );
 
-    useEffect(()=>{
-       getProduct(+id).then( resp => {
-        setItem(resp);
-        setIsLoading(false)
-       });
+    const initial = getTotalQuantityById(id)
+
+    useEffect(() => {
+
+      setIsLoading(true)
+      let productsCollection = collection(db, "products");
+      let refDoc = doc( productsCollection, id )
+      getDoc( refDoc ).then( res => {
+        setItem({ ...res.data() , id: res.id })
+      }).finally(() => setIsLoading(false))
+      
     },[id])
 
     const onAdd = (cantidad)=>{
@@ -26,16 +35,33 @@ export const ItemDetailContainer = () => {
          ...item,
         quantity:cantidad
       }
-      console.log( infoProducto );
       addToCart( infoProducto )
     }
 
+    if( isLoading ){
+      return  (
+      <div className="d-flex">
+        {/* { category ? ( 
+          <>
+            <CardSkeleton/>
+            <CardSkeleton/>
+            <CardSkeleton/>
+            <CardSkeleton/>
+          </>
+        ) : ( */}
+          <>
+            <CardSkeleton/>
+            <CardSkeleton/>
+            <CardSkeleton/>
+            <CardSkeleton/>
+          </>
+  
+        {/* )} */}
+      </div>
+      );
+    }
+
   return (
-    <>
-        {
-          isLoading ?  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" /> :  
-          <ItemDetail {...item} onAdd={onAdd} />
-        } 
-    </>
+    <> <ItemDetail item={item} onAdd={onAdd} initial={initial} />  </>
   )
 }

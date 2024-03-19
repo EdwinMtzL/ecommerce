@@ -8,8 +8,6 @@ const CardContextProvaider = ( {children} ) => {
     const [cart , setCart] = useState([]);
 
     const addToCart = ( product ) => {
-      console.log('j', product);
-
       let existe = isInCart(product.id)
 
       if( existe ){
@@ -17,12 +15,13 @@ const CardContextProvaider = ( {children} ) => {
         let newArray = cart.map( (elemento) => {
           if(elemento.id === product.id){
             return {
-              ...elemento, quantity : elemento.quantity + product.quantity
-            }
+              ...elemento,
+              quantity :  product.quantity
+            };
           }else{
             return elemento
           }
-        } )
+        } );
 
         setCart(newArray)
 
@@ -36,7 +35,7 @@ const CardContextProvaider = ( {children} ) => {
     }
 
     const isInCart = (id) => {
-      let existe = cart.some( ( elemento ) => { elemento.id === id } );
+      let existe = cart.some( ( elemento ) =>  elemento.id === id  );
       return existe
     }
 
@@ -45,11 +44,41 @@ const CardContextProvaider = ( {children} ) => {
       setCart(newArray)
     }
 
+    const getoTotalItems =() => {
+      
+      let items = cart.reduce( ( acc, element ) => { 
+        return acc + element.quantity
+       }, 0 )
+
+       return items
+
+    }
+
+    const getTotalPrice = () => {
+      let total = cart.reduce( ( acc , element ) => {
+        return acc + (element.price * element.quantity)
+      }, 0 )
+      return total
+    }
+
+    const getTotalQuantityById = (id) => {
+      let product = cart.find( ( element ) =>  element.id === id )
+
+        if(product){
+          return product.quantity
+        }else{
+          return product
+        }
+    }
+
     let data ={
         cart,
         addToCart,
         clearCard,
-        removeById
+        removeById,
+        getoTotalItems,
+        getTotalPrice,
+        getTotalQuantityById
     }
 
   return <CardContext.Provider value={ data }>

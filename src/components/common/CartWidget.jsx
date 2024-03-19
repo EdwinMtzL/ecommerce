@@ -5,12 +5,14 @@ import { CardContext } from "../../context/CardContext";
 
 export const CartWidget = () => {
   
-  const { cart } = useContext( CardContext );
+  const { getoTotalItems } = useContext( CardContext );
+
+  let total = getoTotalItems();
   
   return (
     <div>
     <CiShoppingCart />
-    <span> {cart.length} </span> 
+    <span> { total } </span> 
   </div>
   )
 }
