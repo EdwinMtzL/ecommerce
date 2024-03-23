@@ -13,7 +13,7 @@ import CardContextProvaider from "./context/CardContext";
 import CartContainer from "./components/pages/cart/CartContainer";
 import { CheckoutContainer } from "./components/pages/checkout/CheckoutContainer";
 import { FormFormik } from "./components/pages/formFormik/FormFormik";
-
+import Layout from "./components/layout/Layaout";
 
 const App= ()=> {  
 
@@ -24,13 +24,13 @@ const App= ()=> {
         <CardContextProvaider>
           <Navbar/>
           <Routes>
-            <Route path="/" element={<ItemListContainer/>} />
-            <Route path="/category/:category" element={<ItemListContainer/>} />
-            <Route path="/cart" element={<CartContainer/>} />
-            <Route path="/item/:id" element={<ItemDetailContainer/>} />
-            <Route path="/checkout" element={<CheckoutContainer/>} />
-            <Route path="/formik" element={<FormFormik/>} />
-            <Route path="*" element={<h1>404 not found</h1>} />
+              <Route path="/" element={<ItemListContainer/>} />
+              <Route path="/category/:category" element={<ItemListContainer/>} />
+              <Route path="/cart" element={<CartContainer/>} />
+              <Route path="/item/:id" element={<ItemDetailContainer/>} />
+              <Route path="/checkout" element={<CheckoutContainer/>} />
+              <Route path="/formik" element={<FormFormik/>} />
+              <Route path="*" element={<h1>404 not found</h1>} />
           </Routes>
         </CardContextProvaider>
       </BrowserRouter>

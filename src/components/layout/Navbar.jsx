@@ -35,7 +35,7 @@ export default function Navbar() {
         </li>     
       </ul>
       <div className="navbar-text d-flex">
-        <Link to="cart">
+        <Link to="/cart">
           <CartWidget/>
         </Link>
       </div>

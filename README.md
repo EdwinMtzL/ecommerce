@@ -1,8 +1,13 @@
-# React + Vite
+# ECOMMERCE
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Esta es una tienda en linea
 
-Currently, two official plugins are available:
+--- npm i react-router.dom
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### para hacer funcionar debes configutar las siguientes variables
+- VITE_APIKEY
+- VITE_AUTH_DOMAIN
+- VITE_PROYECTID
+- VITE_STORAGE_BUCKET-
+- VITE_MESSAGINGSENDER_ID
+- VITE_APPID

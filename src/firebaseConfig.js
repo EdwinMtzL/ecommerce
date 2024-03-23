@@ -3,12 +3,12 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore"
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAghYms67wNniNKqKj_ztRxESCx5eQgUIo",
-  authDomain: "workshop-ecommerce-b1.firebaseapp.com",
-  projectId: "workshop-ecommerce-b1",
-  storageBucket: "workshop-ecommerce-b1.appspot.com",
-  messagingSenderId: "449581526280",
-  appId: "1:449581526280:web:b6a5aae9b6f544535cd0bd"
+  apiKey: import.meta.env.VITE_APIKEY ,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId:import.meta.env.VITE_PROYECTID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGINGSENDER_ID,
+  appId: import.meta.env.VITE_APPID
 };
 
 // Initialize Firebase
