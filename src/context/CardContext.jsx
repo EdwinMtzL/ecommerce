@@ -5,7 +5,7 @@ export const CardContext = createContext();
 
 const CardContextProvaider = ( {children} ) => {
 
-    const [cart , setCart] = useState([]);
+    const [cart , setCart] = useState( JSON.parse(  localStorage.getItem("cart")) || []);
 
     const addToCart = ( product ) => {
       let existe = isInCart(product.id)
@@ -25,13 +25,18 @@ const CardContextProvaider = ( {children} ) => {
 
         setCart(newArray)
 
+        localStorage.setItem("cart", JSON.stringify(newArray) )
+
       }else{
         setCart( [...cart, product] )
+        localStorage.setItem("cart", JSON.stringify([...cart, product] ) )
+
       }
     } 
 
     const clearCard = () => {
       setCart([])
+      localStorage.removeItem("cart")
     }
 
     const isInCart = (id) => {
@@ -42,6 +47,8 @@ const CardContextProvaider = ( {children} ) => {
     const removeById = ( id ) =>{
       let newArray = cart.filter( (elemento) =>  elemento.id !== id )
       setCart(newArray)
+      localStorage.setItem("cart", JSON.stringify( newArray ) )
+
     }
 
     const getoTotalItems =() => {

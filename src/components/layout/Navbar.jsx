@@ -9,7 +9,10 @@ export default function Navbar() {
   return (   
 <nav className="navbar navbar-expand-lg navbar-light bg-light">
   <div className="container-fluid">
-    <a className="navbar-brand" href="#">Logo</a>
+    <span className="navbar-brand" href="#">
+      <img src="https://res.cloudinary.com/dhvinlwbj/image/upload/v1711220208/Ecommerce/o1t9zhmapkzgtne4urth.png" alt="" />
+      <span className="ms-2">Topa morita</span>
+    </span>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>

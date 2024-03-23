@@ -12,8 +12,12 @@ export const Checkout = ( { sendingData,captureInfo }) => {
                 <label for="floatingInput">Ingresa tu nombre</label>
             </div>
             <div className="form-floating  mb-3">
-                <input type="text" name="lastName" className="form-control" id="lastname" placeholder='Ingresa tu apellido' onChange={captureInfo} />
-                <label for="floatingInput" className="form-label" id="floatingInputLast">Ingresa tu apellido</label>
+                <input type="text" name="phone" className="form-control" id="phone" placeholder='Ingresa tu telefono' onChange={captureInfo} />
+                <label for="floatingInput" className="form-label" id="floatingInputLast">Ingresa tu telefono</label>
+            </div> 
+            <div className="form-floating  mb-3">
+                <input type="text" name="email" className="form-control" id="email" placeholder='Ingresa tu email' onChange={captureInfo} />
+                <label for="floatingInput" className="form-label" id="floatingInputLast">Ingresa tu telefono</label>
             </div> 
             <div>
                 <button className='btn btn-primary' >Enviar</button>
