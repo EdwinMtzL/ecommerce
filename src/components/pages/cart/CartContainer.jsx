@@ -34,7 +34,7 @@ const CartContainer = () => {
     return (
       <div className='p-3'>
         <h2> <CiShoppingCart className="me-2" /> Carrito</h2> <hr/>
-        <div className='d-flex'>
+        <div className='d-flex flex-sm-column flex-lg-row'>
           <div className='col-lg-6 col-sm-12 p-5'>
             {
               cart.map( ( product ) => 
