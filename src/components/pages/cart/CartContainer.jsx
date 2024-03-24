@@ -2,6 +2,10 @@ import React, { useContext } from 'react'
 import { CardContext } from '../../../context/CardContext';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2'
+import { CiShoppingCart } from "react-icons/ci";
+import { MdDelete } from "react-icons/md";
+import { Card, Avatar, Box, CardContent, CardMedia, Typography, CardActions, Button } from "@mui/material";
+
 
 const CartContainer = () => {
     const { cart , clearCard, removeById, getTotalPrice } = useContext( CardContext );
@@ -28,39 +32,69 @@ const CartContainer = () => {
     }
 
     return (
-      <div>
-        <div className='col-6'>
-          <h2 className='pb-3'>Carrito</h2>
-          {
-            cart.map( ( product ) => 
-            <div key={ product.id } className='card pb-3'> 
-            <img src={product.image} alt={product.title}  />
-              <h3> <strong>Articulo: </strong> {product.title} </h3> 
-              <p> <strong>Cantidad : </strong>{product.quantity} </p>
-              <p> <strong>Precio :</strong> ${product.price}.00 c/u </p>
-              <p> <strong>Total :</strong> ${product.price}.00 </p>
-              <button className='btn btn-danger' onClick={ () => { removeById(product.id) } }>Eliminar</button>
-            </div> )
-          }
-        </div>
-        <div className='col-6'>
-          <h3>Total a pagar es: {total} </h3>
-          <Link to="/checkout">
-          </Link>
-          {
-            cart.length > 0 ? (
-              <div>
-                <button onClick={clearAlert} className='btn btn-danger me-3'>Limpiar carrito</button>
-                <Link to="/checkout">
-                  <button className='btn btn-success'>Terminar compra</button>
-                </Link>
+      <div className='p-3'>
+        <h2> <CiShoppingCart className="me-2" /> Carrito</h2> <hr/>
+        <div className='d-flex'>
+          <div className='col-6 p-5'>
+            {
+              cart.map( ( product ) => 
+              <div className="p-3" key={ product.id }>
+              <Card sx={{ display: 'flex' }} className="p-3">
+                <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                  <CardContent sx={{ flex: '1 0 auto' }}>
+                    <Box sx={{ display: 'flex', flexDirection: 'column' }} className="flex-row">
+                      <Avatar
+                        src={product.image}
+                        sx={{ width: 77, height: 77 }}
+                      />
+                      <Typography component="div" variant="h5" className='ms-3'>
+                        {product.title}
+                      </Typography>
+                    </Box>
+                    <Typography variant="subtitle1" color="text.secondary" component="div">
+                      <strong>Cantidad:</strong> <span> {product.quantity}</span>
+                    </Typography>
+                    <Typography variant="subtitle1" color="text.secondary" component="div">
+                      <strong>Precio:</strong><span className=""> ${product.price}.00</span>
+                    </Typography> 
+                    <Typography variant="subtitle1" color="text.secondary" component="div">
+                      <strong>Total:</strong><span className=""> ${product.price *  product.quantity}.00</span>
+                    </Typography>     
+                  </CardContent>
+                  <CardActions className="btn-card">
+                    <Button 
+                        color="error" 
+                        onClick={ () => { removeById(product.id) } }> 
+                    <MdDelete />Eliminar</Button>
+                  </CardActions>
+                </Box>
+              </Card>
               </div>
-            ):(
-              <Link to="/">
-                <button className='btn btn-success'>Agregar productos</button>
-              </Link>
-            )
-          }
+              )
+            }
+          </div>
+          <div className='col-6 p-5'>
+            <Typography variant="h4" color="text.secondary" component="div">
+                <strong>Total a pagar:</strong><span className=""> ${total}.00</span>
+              </Typography>
+              <hr />
+            <Link to="/checkout">
+            </Link>
+            {
+              cart.length > 0 ? (
+                <div>
+                  <button onClick={clearAlert} className='btn btn-danger me-3'>Limpiar carrito</button>
+                  <Link to="/checkout">
+                    <button className='btn btn-success'>Terminar compra</button>
+                  </Link>
+                </div>
+              ):(
+                <Link to="/">
+                  <button className='btn btn-success'>Agregar productos</button>
+                </Link>
+              )
+            }
+          </div>
         </div>
 
       </div>

@@ -1,0 +1,13 @@
+body{
+    overflow-x:hidden ;
+}
+.items-card{
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0;
+}
+
+.btn-card {
+    display: flex;
+    justify-content: flex-end;
+}

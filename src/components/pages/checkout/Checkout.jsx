@@ -1,8 +1,15 @@
 import React from 'react'
+import { Box, Button, TextField } from "@mui/material"
+import { useFormik } from 'formik';
+import  * as Yup from 'yup';
+
 
 export const Checkout = ( { sendingData,captureInfo }) => {
+
+
+
   return (
-    <div>
+    <div className='p5'>
         <h2>aca va el checkout</h2>
 
 
