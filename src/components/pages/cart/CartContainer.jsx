@@ -35,11 +35,11 @@ const CartContainer = () => {
       <div className='p-3'>
         <h2> <CiShoppingCart className="me-2" /> Carrito</h2> <hr/>
         <div className='d-flex'>
-          <div className='col-6 p-5'>
+          <div className='col-lg-6 col-sm-12 p-5'>
             {
               cart.map( ( product ) => 
-              <div className="p-3" key={ product.id }>
-              <Card sx={{ display: 'flex' }} className="p-3">
+              <div className="p-lg-3" key={ product.id }>
+              <Card sx={{ display: 'flex' }} className="p-lg-3">
                 <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                   <CardContent sx={{ flex: '1 0 auto' }}>
                     <Box sx={{ display: 'flex', flexDirection: 'column' }} className="flex-row">
@@ -73,7 +73,7 @@ const CartContainer = () => {
               )
             }
           </div>
-          <div className='col-6 p-5'>
+          <div className='col-lg-6 col-sm-12 '>
             <Typography variant="h4" color="text.secondary" component="div">
                 <strong>Total a pagar:</strong><span className=""> ${total}.00</span>
               </Typography>

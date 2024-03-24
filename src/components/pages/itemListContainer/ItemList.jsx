@@ -7,7 +7,7 @@ export const ItemList = ({ items }) => {
 
   return (
     <>
-      <div className='row'>
+      <div className='row p-3'>
         {/* con este boton se pueden agregar varios elemntos */}
         {/* <AgregarDocs/> */}
           { 

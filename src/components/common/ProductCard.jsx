@@ -8,7 +8,7 @@ export default function ProductCard( {image,id,title,description, price} ) {
     // const {title, description, price} = prop;
   
 return (
-    <div className="col-4 items-card">
+    <div className="col-lg-4 col-sm-12 items-card">
         <Card sx={{maxWidth:400}}>
             <CardActionArea>
                 <CardMedia 
